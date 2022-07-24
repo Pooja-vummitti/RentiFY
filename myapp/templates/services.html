@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{% block body %}
+{% load static %}
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+      <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+          <span class="subheading">What We Offer</span>
+        <h2 class="mb-2">Services</h2>
+      </div>
+    </div>
+    <div class="container">
+        <!-- Hover effect try -->
+         <div class="col-md-4 col-sm-6">
+                  <div class="box1">
+                      <img class="pic-1" src="{% static 'myapp/images/software_photo.jpg' %}" class="rounded-3" alt="Avatar" /" style="height: 233px;">
+                      <h3 class="title">Softwares</h3>
+                      <ul class="icon">
+                          <li><a href="products_SW"><i class="fa fa-search"></i></a></li>
+                          <li><a href="#"><i class="fa fa-link"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="box1">
+                    <img class="pic-2" src="{% static 'myapp/images/hardware_photo.jpg' %}" class="rounded-3" alt="Avatar" /" style="height: 233px;">
+                    <h3 class="title">Hardwares</h3>
+                    <ul class="icon">
+                        <li><a href="products_HW"><i class="fa fa-search"></i></a></li>
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="box1">
+                      <img class="pic-3" src="{% static 'myapp/images/package_image.jpg' %}" class="rounded-3" alt="Avatar" /" style="height: 233px;">
+                      <h3 class="title">Packages</h3>
+                      <ul class="icon">
+                          <li><a href="product"><i class="fa fa-search"></i></a></li>
+                          <li><a href="#"><i class="fa fa-link"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      
+        
+          
+
+    </div>
+</section>
+{% endblock body %}

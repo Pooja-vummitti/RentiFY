@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+
+{% block body %}
+{% load static %}
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+      <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+        <h2 class="mb-2">HARDWARES</h2>
+      </div>
+    </div>
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="carousel-car owl-carousel">
+                    <div class="item">
+                        {% for product in products %}
+                        {% if product.p_type == 'HW' %}
+                        <div class="car-wrap rounded ftco-animate" style="width: 312px;">
+                            <div class="img rounded d-flex align-items-end">
+                                <img src="images/{{product.image}}" >
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="#"> {{ product.name }}</a></h2>
+                                <div>
+                                    <span class="cat"><strong>MRP:{{ product.m_price }}</strong></span></div>
+                                    <div>
+                                    <p class="price ml-auto"><strong style="margin-right: 13px;">Rent Price&nbsp&nbsp<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                                        <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+                                      </svg></strong>Rs.{{product.rent_price|floatformat:2}} <span>/day</span></p>
+                                </div>
+                                <p class="d-flex mb-0 d-block">
+                                    <button data-product={{product.id}} data-action="add" class="btn btn-primary py-2 mr-1 add-btn update-cart">Add to Cart</a> 
+                                    <button href="#" class="btn btn-secondary py-2 ml-1">Details</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

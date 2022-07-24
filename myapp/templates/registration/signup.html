@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block body %}
+{% load static %}
+
+<main class="container my-4">
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">Signup</h3>
+    <div class="row">
+	<table class="table table-bordered">
+		<form method="post">
+			{% csrf_token %}
+			{{form.as_table}}
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Register" class="btn btn-primary" />
+					
+				</td>
+			</tr>
+		</form>
+	</table>
+	</div>
+</main>
+
+{% endblock body %}

@@ -1,0 +1,99 @@
+{% extends 'base.html'%}
+
+{% block body %}
+{% load static %}
+<section class="h-100 h-custom" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card">
+            
+            <div class="card-body p-4">
+                
+              <div class="row">
+  
+                <div class="col-lg-7">
+                  <h5 style= "width: 170px; border:black; border-width:5px; border-style:solid;" class="mb-3"><a href="{% url 'servicepage' %}" class="text-body">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                      </svg><span>&nbsp;&nbsp;&nbsp;Continue shopping</span></a></h5>
+                  <hr style="width: 900px;">
+  
+                  <div class="d-flex justify-content-between align-items-center mb-4" style="width: 828px;">
+                    <div>
+                      <p class="mb-1">Shopping cart</p>
+                      <p class="mb-0">You have {{order.get_cart_items}} items in your cart</p>
+                      <p><h5>Total: <strong style="width: 227px;">₹{{order.get_cart_total|floatformat:2}}</h5></p>
+                    </div>
+                    <div>
+                      <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
+                          class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
+                    </div>
+                  </div>
+                  {% if user.is_authenticated%}
+                    {% for item in items %}
+                  <div class="card mb-3" style="width: 897px;">
+                    
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img class="row-image" src="{{item.product.imageURL}}"style="width: 150px;"></div>
+                          <div class="ms-3">
+                            <h5>{{item.product.name}}</h5>
+                          </div>
+                        </div>
+                          <div>
+                            <p class="quantity">x{{item.quantity}}</p></div>
+                            <div class="quantity"style="margin-right: 125px;margin-top: 17px;">
+                               <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                              </svg></a>
+                              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                  </svg></a>
+                        </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0"><p>₹{{item.product.rent_price|floatformat:2}}</p></h5>
+                          </div>
+                          
+                          <a href="#!" style="color: black;margin-top: 14px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                {% endfor %}
+                {% else %}
+
+                <h1>Login First</h1>
+
+                  {% endif %}
+                <div class="d-flex justify-content-between mb-4">
+                    <p class="mb-2">Total(Incl. taxes)</p>
+                    <p class="mb-2">₹{{order.get_cart_total}}</p>
+                  </div>
+                  <a href="{% url 'checkout' %}">
+                  <button type="button" class="btn btn-info btn-block btn-lg">
+                    <div class="d-flex justify-content-between">
+                      <span>₹{{order.get_cart_total}}</span>
+                      <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                    </div>
+                  </button></a>
+  
+              </div>
+  
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  {% endblock body %}
+                  
+  
