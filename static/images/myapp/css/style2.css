@@ -1,0 +1,12 @@
+.errorlist li{
+    color: red
+  }
+.table span{
+  color: red;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.lh-condensed { line-height: 1.25; }
